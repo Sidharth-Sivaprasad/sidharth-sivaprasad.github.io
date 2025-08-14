@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme inline {
+	--animate-first: moveVertical 30s ease infinite;
+	--animate-second: moveInCircle 20s reverse infinite;
+	--animate-third: moveInCircle 40s linear infinite;
+	--animate-fourth: moveHorizontal 40s ease infinite;
+	--animate-fifth: moveInCircle 20s ease infinite;
+
+	@keyframes moveHorizontal {
+		0% {
+			transform: translateX(-50%) translateY(-10%);
+		}
+		50% {
+			transform: translateX(50%) translateY(10%);
+		}
+		100% {
+			transform: translateX(-50%) translateY(-10%);
+		}
+	}
+
+	@keyframes moveInCircle {
+		0% {
+			transform: rotate(0deg);
+		}
+		50% {
+			transform: rotate(180deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes moveVertical {
+		0% {
+			transform: translateY(-50%);
+		}
+		50% {
+			transform: translateY(50%);
+		}
+		100% {
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.icon {
+	width: 52px;
+	height: 52px;
+	transition: transform 0.3s ease;
+}
+
+.active-icon {
+	outline: 0.4vw solid #8a8a8abc;
+	outline-offset: 0; /* no gap */
+	border-radius: 50%;
+	animation: iconAnimation 3s linear infinite;
+}
+
+.inactive-icon {
+	animation: iconAnimation1 3s linear infinite;
+}
+
+@keyframes iconAnimation {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-1vw);
+	}
+}
+
+@keyframes iconAnimation1 {
+	0%,
+	100% {
+		transform: translateY(-1vw);
+	}
+	50% {
+		transform: translateY(0);
+	}
+}
+
+/* Flippable card styles */
+.flippableContainer {
+	position: relative;
+	width: 30vw;
+	height: 30vw;
+	perspective: 1000px;
+	z-index: 1;
+}
+
+.flippable {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 0.9s;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+	/* Flippable card bigger on mobile for visibility */
+	.flippableContainer {
+		width: 40vw;
+		height: 40vw;
+		display: flex;
+		top: -22px;
+		left: 26vw;
+		position: relative;
+		transform: none;
+	}
+
+	.profile-text {
+		text-align: center;
+	}
+}
+
+.front,
+.back {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	backface-visibility: hidden;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
+	filter: grayscale(50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	color: #000;
+}
+
+.front {
+	transform: rotateY(0deg);
+	z-index: 1;
+}
+
+.back {
+	transform: rotateY(180deg);
+	z-index: 1;
+}
+
+.flip {
+	transform: rotateY(180deg);
+}
