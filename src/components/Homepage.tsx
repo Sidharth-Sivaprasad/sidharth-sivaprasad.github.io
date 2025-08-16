@@ -5,6 +5,8 @@ import Photographer from "./photographer.tsx";
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation.tsx";
 import CoderProfile from "./CoderProfile.tsx";
 import Experience from "./Experience.tsx";
+import Projects from "./Projects.tsx";
+import { ContactCodeBlock } from "./contact.tsx";
 
 const Homepage: React.FC = () => {
 	const [profile, setProfile] = useState<"coder" | "photo">("coder");
@@ -16,7 +18,7 @@ const Homepage: React.FC = () => {
 	const backImage = "/photo_pic.png";
 
 	return (
-		<div className="relative min-h-screen  overflow-y-auto">
+		<div className="relative ">
 			<BackgroundGradientAnimation containerClassName="absolute top-0 left-0 w-screen min-h-screen z-10  " />
 			<div
 				className="relative w-screen min-h-screen flex flex-col bg-cover bg-center z-100"
@@ -67,6 +69,8 @@ const Homepage: React.FC = () => {
 			</div>
 			{profile === "coder" && <CoderProfile />}
 			{profile === "coder" && <Experience />}
+			{profile === "coder" && <Projects />}
+			{profile === "coder" && <ContactCodeBlock />}
 		</div>
 	);
 };

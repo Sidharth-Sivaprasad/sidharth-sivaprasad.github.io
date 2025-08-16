@@ -71,10 +71,16 @@ const Coder: React.FC = () => {
 							/>
 
 							<ul className="grid grid-cols-2 gap-4 md:flex md:flex-col">
-								<GridItem area="" title="Profile" />
-								<GridItem area="" title="Projects" />
+								<a href="#profile">
+									<GridItem area="" title="Profile" />
+								</a>
+								<a href="#projects">
+									<GridItem area="" title="Projects" />
+								</a>
 								<GridItem area="" title="Resume" />
-								<GridItem area="" title="Contact" />
+								<a href="#contact">
+									<GridItem area="" title="Contact" />
+								</a>
 							</ul>
 							<div
 								className="flex gap-10 mt-10 w-full"

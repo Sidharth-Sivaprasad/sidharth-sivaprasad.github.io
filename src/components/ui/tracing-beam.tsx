@@ -21,7 +21,7 @@ export const TracingBeam = ({
 
 	useEffect(() => {
 		if (contentRef.current) {
-			// Add a little extra height padding
+			// Add padding so we have room for icon
 			setSvgHeight(contentRef.current.offsetHeight + 100);
 		}
 	}, []);
@@ -36,14 +36,17 @@ export const TracingBeam = ({
 		{ stiffness: 500, damping: 90 }
 	);
 
+	// Adjust end icon height
+	const endIconY = svgHeight - 30; // <-- 30px above bottom
+
 	return (
 		<motion.div
 			ref={ref}
 			className={cn("relative mx-auto h-full w-full max-w-4xl", className)}
 		>
 			{/* Timeline */}
-			<div className="absolute top-3 -left-4 md:-left-20">
-				{/* Outer Circle */}
+			<div className="hidden md:block absolute top-3 -left-4 md:-left-20">
+				{/* Top starting circle */}
 				<motion.div
 					transition={{ duration: 0.2, delay: 0.5 }}
 					animate={{
@@ -54,7 +57,6 @@ export const TracingBeam = ({
 					}}
 					className="border-netural-200 ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border shadow-sm"
 				>
-					{/* Inner Circle */}
 					<motion.div
 						transition={{ duration: 0.2, delay: 0.5 }}
 						animate={{
@@ -65,13 +67,12 @@ export const TracingBeam = ({
 					/>
 				</motion.div>
 
-				{/* Vertical SVG Path */}
+				{/* SVG Path */}
 				<svg
 					viewBox={`0 0 100 ${svgHeight}`}
-					width="100"
-					height={svgHeight}
+					width="100px"
+					height={svgHeight - 110}
 					className="ml-4 block"
-					aria-hidden="false"
 				>
 					{/* Background path */}
 					<motion.path
@@ -81,27 +82,24 @@ export const TracingBeam = ({
 						strokeOpacity="0.16"
 					/>
 
-					{/* Animated gradient path */}
+					{/* Gradient path */}
 					<motion.path
 						d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
 						fill="none"
 						stroke="url(#gradient)"
-						strokeWidth="1.25"
+						strokeWidth="2.5"
 						className="motion-reduce:hidden"
 					/>
 
-					{/* Year label */}
-					<text
-						x="40"
-						y={svgHeight / 2}
-						fill="white"
-						fontSize="14"
-						fontFamily="sans-serif"
-						textAnchor="middle"
-						alignmentBaseline="middle"
-					>
-						2025
-					</text>
+					{/* End icon slightly above bottom */}
+					<circle
+						cx="0" // horizontal position
+						cy={endIconY} // vertical position
+						r="10"
+						fill="#10b981"
+						stroke="#059669"
+						strokeWidth="8"
+					/>
 
 					<defs>
 						<motion.linearGradient
