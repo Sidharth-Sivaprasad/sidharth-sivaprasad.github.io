@@ -48,8 +48,8 @@ const Homepage: React.FC = () => {
 	// Background based on selected profile
 	const backgroundImage = profile === "coder" ? "./coder3.svg" : "./photo.svg";
 
-	const frontImage = "/coder_pic.png";
-	const backImage = "/photo_pic.png";
+	const frontImage = "./coder_pic.png";
+	const backImage = "./photo_pic.png";
 
 	return (
 		<div className="relative ">
