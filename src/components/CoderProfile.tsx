@@ -69,16 +69,16 @@ const CoderProfile: React.FC = () => {
 					</div>
 				</div>
 				<div className="w-full max-w-xl mx-auto relative z-20">
-					<p className="font-serif text-white text-sm md:text-lg text-center">
-						" Hi, I’m Sid — a Software Development Enthusiast with a deep
-						passion for Frontend development. I thrive in agile, fast-paced
-						environments where I bring ideas to life and deliver solutions that
-						truly matter. I’m always curious about improving user experiences
-						and crafting interfaces that engage. When I’m not coding, you’ll
-						find me behind the camera, capturing moments that inspire and tell
-						unique stories. I love connecting with like-minded people to create
-						something meaningful by blending technology and creativity
-						together."
+					<p className="font-sans text-white text-sm md:text-lg text-center">
+						" Hi, I’m Sid — a Software Development Enthusiast from Kerala 🌴,
+						India with a deep passion for Frontend development. I thrive in
+						agile, fast-paced environments where I bring ideas to life and
+						deliver solutions that truly matter. I’m always curious about
+						improving user experiences and crafting interfaces that engage. When
+						I’m not coding, you’ll find me behind the camera, capturing moments
+						that inspire and tell unique stories. I love connecting with
+						like-minded people to create something meaningful by blending
+						technology and creativity together."
 					</p>
 				</div>
 

@@ -18,7 +18,13 @@ export function ContactCodeBlock() {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		// Implement form submission here if needed
+
+		const mailto = `mailto:sivaprasadsidharth@gmail.com?subject=${encodeURIComponent(
+			"Contact from website"
+		)}&body=${encodeURIComponent(`\n\n${form.message}`)}`;
+
+		window.location.href = mailto;
+
 		setSubmitted(true);
 	};
 

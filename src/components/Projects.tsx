@@ -90,7 +90,7 @@ const projectList = [
 				</p>
 				<br />
 				<p>
-					his experience enhanced my skills in Unity development, ROS2, and
+					This experience enhanced my skills in Unity development, ROS2, and
 					Agile project management, demonstrating a holistic approach to
 					autonomous systems in dynamic environments
 				</p>

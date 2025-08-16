@@ -146,3 +146,46 @@
 .flip {
 	transform: rotateY(180deg);
 }
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.fade-in {
+	animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes wobble {
+	0% {
+		transform: rotate(0deg);
+	}
+	15% {
+		transform: rotate(-8deg);
+	}
+	30% {
+		transform: rotate(7deg);
+	}
+	45% {
+		transform: rotate(-6deg);
+	}
+	60% {
+		transform: rotate(4deg);
+	}
+	75% {
+		transform: rotate(-3deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.wobble {
+	animation: wobble 30.6s ease-in-out infinite;
+	transform-origin: center;
+	display: inline-block; /* ensures transform works as expected */
+}
