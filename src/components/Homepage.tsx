@@ -46,7 +46,7 @@ const Homepage: React.FC = () => {
 	const [profile, setProfile] = useState<"coder" | "photo">("coder");
 
 	// Background based on selected profile
-	const backgroundImage = profile === "coder" ? "/coder3.svg" : "/photo.svg";
+	const backgroundImage = profile === "coder" ? "./coder3.svg" : "./photo.svg";
 
 	const frontImage = "/coder_pic.png";
 	const backImage = "/photo_pic.png";
@@ -67,7 +67,7 @@ const Homepage: React.FC = () => {
 				{/* Row for icons */}
 				<div className="flex space-x-8 pt-16 pl-8 md:pl-16 lg:pl-24 z-20">
 					<img
-						src="/dev_icon2.png"
+						src="./dev_icon2.png"
 						alt="Dev"
 						className={`icon transition-transform duration-300 hover:scale-110 ${
 							profile === "coder" ? "active-icon" : "inactive-icon"
@@ -76,7 +76,7 @@ const Homepage: React.FC = () => {
 					/>
 
 					<img
-						src="/cam_icon.png"
+						src="./cam_icon.png"
 						alt="Cam"
 						className={`icon transition-transform duration-300 hover:scale-110 ${
 							profile === "photo" ? "active-icon" : "inactive-icon"
