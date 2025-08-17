@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import Coder from "./coder.tsx";
 import Photographer from "./photographer.tsx";
@@ -44,7 +44,14 @@ const Homepage: React.FC = () => {
 		"./photo_webp/32.webp",
 	];
 	const [profile, setProfile] = useState<"coder" | "photo">("coder");
+	const [photoClicked, setPhotoClicked] = useState(() => {
+		const saved = localStorage.getItem("photoClicked");
+		return saved === "true"; // convert string to boolean
+	});
 
+	useEffect(() => {
+		localStorage.setItem("photoClicked", photoClicked.toString());
+	}, [photoClicked]);
 	// Background based on selected profile
 	const backgroundImage = profile === "coder" ? "./coder3.svg" : "./photo.svg";
 
@@ -81,8 +88,17 @@ const Homepage: React.FC = () => {
 						className={`icon transition-transform duration-300 hover:scale-110 ${
 							profile === "photo" ? "active-icon" : "inactive-icon"
 						}`}
-						onClick={() => setProfile("photo")}
+						onClick={() => {setProfile("photo");
+							setPhotoClicked(true);
+						}}
 					/>
+					 {!photoClicked && (
+        <img
+          src="./swoosh.svg"
+          alt="pic"
+          className="relative w-40 opacity-50 right-10"
+        />
+      )}
 				</div>
 
 				{/* Row for text with separate components */}
