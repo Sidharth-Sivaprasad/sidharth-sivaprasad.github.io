@@ -4,7 +4,7 @@ import { nodePolyfills } from "vite-plugin-node-polyfills";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-	base: "/sidharth_sivaprasad_portfolio_v2/",
+	base: "/",
 	plugins: [
 		react(),
 		tailwindcss(),
