@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { cn } from "../../libs/utils";
-export const ThreeDMarquee = ({
+const ThreeDMarquee = ({
 	images,
 	className,
 }: {
@@ -144,3 +144,5 @@ const GridLineVertical = ({
 		></div>
 	);
 };
+
+export default ThreeDMarquee;

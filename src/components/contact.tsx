@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-export function ContactCodeBlock() {
+export default function ContactCodeBlock() {
 	const [form, setForm] = useState({
 		name: "",
 		email: "",

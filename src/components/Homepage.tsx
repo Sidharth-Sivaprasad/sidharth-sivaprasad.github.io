@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import "./homepage.css";
+
+// Direct import for initial visible component
 import Coder from "./coder.tsx";
-import Photographer from "./photographer.tsx";
-import { BackgroundGradientAnimation } from "./ui/background-gradient-animation.tsx";
-import CoderProfile from "./CoderProfile.tsx";
-import Experience from "./Experience.tsx";
-import Projects from "./Projects.tsx";
-import { ContactCodeBlock } from "./contact.tsx";
-import { ThreeDMarquee } from "./ui/3d-marquee.tsx";
+import LoadingFallback from "./loader.tsx";
+
+// Lazy load less critical components
+const Photographer = lazy(() => import("./photographer.tsx"));
+const BackgroundGradientAnimation = lazy(
+	() => import("./ui/background-gradient-animation.tsx")
+);
+const CoderProfile = lazy(() => import("./CoderProfile.tsx"));
+const Experience = lazy(() => import("./Experience.tsx"));
+const Projects = lazy(() => import("./Projects.tsx"));
+const ContactCodeBlock = lazy(() => import("./contact.tsx"));
+const ThreeDMarquee = lazy(() => import("./ui/3d-marquee.tsx"));
 
 const Homepage: React.FC = () => {
 	const images = [
@@ -52,6 +59,7 @@ const Homepage: React.FC = () => {
 	useEffect(() => {
 		localStorage.setItem("photoClicked", photoClicked.toString());
 	}, [photoClicked]);
+
 	// Background based on selected profile
 	const backgroundImage = profile === "coder" ? "./coder3.svg" : "./photo.svg";
 
@@ -59,14 +67,15 @@ const Homepage: React.FC = () => {
 	const backImage = "./photo_pic.png";
 
 	return (
-		<div className="relative ">
-			{profile == "coder" ? (
-				<BackgroundGradientAnimation containerClassName="absolute top-0 left-0 w-screen min-h-screen z-10  " />
+		<div className="relative">
+			{profile === "coder" ? (
+				<BackgroundGradientAnimation containerClassName="absolute top-0 left-0 w-screen min-h-screen z-10" />
 			) : (
-				<div className=" absolute top-0 left-0 w-full bg-black p-2 ring-1 ring-neutral-700/10 dark:bg-black">
+				<div className="absolute top-0 left-0 w-full bg-black p-2 ring-1 ring-neutral-700/10 dark:bg-black">
 					<ThreeDMarquee images={images} />
 				</div>
-			)}{" "}
+			)}
+
 			<div
 				className="relative w-screen min-h-screen flex flex-col bg-cover bg-center z-100"
 				style={{ backgroundImage: `url(${backgroundImage})`, zIndex: 100 }}
@@ -79,26 +88,29 @@ const Homepage: React.FC = () => {
 						className={`icon transition-transform duration-300 hover:scale-110 ${
 							profile === "coder" ? "active-icon" : "inactive-icon"
 						}`}
+						loading="lazy"
 						onClick={() => setProfile("coder")}
 					/>
-
 					<img
 						src="./cam_icon.png"
 						alt="Cam"
 						className={`icon transition-transform duration-300 hover:scale-110 ${
 							profile === "photo" ? "active-icon" : "inactive-icon"
 						}`}
-						onClick={() => {setProfile("photo");
+						loading="lazy"
+						onClick={() => {
+							setProfile("photo");
 							setPhotoClicked(true);
 						}}
 					/>
-					 {!photoClicked && (
-        <img
-          src="./swoosh.svg"
-          alt="pic"
-          className="relative w-40 opacity-50 right-10"
-        />
-      )}
+					{!photoClicked && (
+						<img
+							src="./swoosh.svg"
+							alt="pic"
+							className="relative w-40 opacity-50 right-10"
+							loading="lazy"
+						/>
+					)}
 				</div>
 
 				{/* Row for text with separate components */}
@@ -123,16 +135,18 @@ const Homepage: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			{profile === "coder" && <CoderProfile />}
-			{profile === "coder" && <Experience />}
-			{profile === "coder" && <Projects />}
-			{profile === "coder" ? (
-				<ContactCodeBlock />
-			) : (
-				<div className=" mt-100">
+			<Suspense fallback={<LoadingFallback />}>
+				{profile === "coder" && <CoderProfile />}
+				{profile === "coder" && <Experience />}
+				{profile === "coder" && <Projects />}
+				{profile === "coder" ? (
 					<ContactCodeBlock />
-				</div>
-			)}
+				) : (
+					<div className="mt-100">
+						<ContactCodeBlock />
+					</div>
+				)}
+			</Suspense>
 		</div>
 	);
 };

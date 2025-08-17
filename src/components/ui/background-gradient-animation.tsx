@@ -2,7 +2,7 @@
 import { cn } from "../../libs/utils";
 import { useEffect, useRef, useState } from "react";
 
-export const BackgroundGradientAnimation = ({
+const BackgroundGradientAnimation = ({
 	gradientBackgroundStart = "#170032ff",
 	gradientBackgroundEnd = "#000000ff",
 	firstColor = "18, 113, 255", // vivid blue
@@ -179,3 +179,5 @@ export const BackgroundGradientAnimation = ({
 		</div>
 	);
 };
+
+export default BackgroundGradientAnimation;
