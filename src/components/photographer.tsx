@@ -23,7 +23,7 @@ const Photographer: React.FC = () => {
 					<TextGenerateEffect
 						color={"#999999"}
 						words={"Hi. I’m Sid."}
-						className="text-3xl md:text-5xl font-bold"
+						className="text-3xl md:text-5xl font-bold pt-10"
 					/>
 
 					<br />
@@ -65,7 +65,7 @@ const Photographer: React.FC = () => {
 				</div>
 				<div className="rightSide">
 					<div className="buttonsContainer">
-						<div className="relative rounded-2xl p-8 mb-6  ">
+						<div className="relative rounded-2xl p-8 mb-6 md:mt-14">
 							{/* Glow effect behind the box */}
 							<GlowingEffectBlack
 								blur={0}

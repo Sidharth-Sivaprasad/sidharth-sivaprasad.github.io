@@ -19,15 +19,15 @@ const Coder: React.FC = () => {
 			>
 				{" "}
 				<div className="leftSide">
-					<span className="frame2_text">
+					<span className="frame2_text ">
 						<TextGenerateEffect
 							words={"Hi. I’m Sid."}
-							className="text-2xl md:text-4xl font-bold font-mono"
+							className="text-2xl md:text-4xl font-bold font-mono pt-10"
 						/>
 
 						<br />
 						<div
-							className="bg-[#020104ab] rounded-md md:w-80  w-60 md:h-[15rem] h-[10rem] font-mono text-sm md:text-base leading-relaxed select-text tilt-animation"
+							className=" bg-[#020104ab] rounded-md md:w-80  w-60 md:h-[15rem] h-[10rem] font-mono text-sm md:text-base leading-relaxed select-text "
 							style={{
 								overflowY: "auto",
 							}}

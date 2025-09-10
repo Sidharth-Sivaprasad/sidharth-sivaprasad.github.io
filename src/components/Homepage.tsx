@@ -122,7 +122,11 @@ const Homepage: React.FC = () => {
 
 					{/* Flippable card */}
 					<div className="flippableContainer">
-						<div className={`flippable ${profile === "photo" ? "flip" : ""}`}>
+						<div
+							className={`md:top-0 top-[-82px] flippable ${
+								profile === "photo" ? "flip" : ""
+							}`}
+						>
 							<div
 								className="front"
 								style={{ backgroundImage: `url(${frontImage})` }}
